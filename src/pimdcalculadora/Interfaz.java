@@ -10,6 +10,38 @@ package pimdcalculadora;
  */
 public class Interfaz extends javax.swing.JFrame {
 
+    
+    // Creamos una instancia de la Logica:
+    public Logica logica = new Logica();
+    
+    // Creo un metodo que llamará a los métodos de la clase Logica para que sea más fácil de leer y mantener:
+    private void Operacion (String operacion) {
+        double num1 = Double.parseDouble(ingresaPrimero.getText());
+        double num2 = Double.parseDouble(ingresaSegundo.getText());
+        double resultado = 0;
+
+        switch(operacion) {
+            case "sumar":
+                resultado = logica.sumar(num1, num2);
+                break;
+            case "restar":
+                resultado = logica.restar(num1, num2);
+                break;
+            case "multiplicar":
+                resultado = logica.multiplicar(num1, num2);
+                break;
+            case "dividir":
+                if (num2 == 0) {
+                    resultado.setText("Error: División por 0");
+                    return;
+                }
+                resultado = logica.dividir(num1, num2);
+                break;
+        }
+
+        resultado.setText("Resultado: " + resultado);
+}
+    
     /**
      * Creates new form Interfaz
      */
@@ -38,7 +70,7 @@ public class Interfaz extends javax.swing.JFrame {
         btnDividir = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        resultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,12 +115,32 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         btnRestar.setText("Restar");
+        btnRestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestarActionPerformed(evt);
+            }
+        });
 
         btnMultiplicar.setText("Multiplicar");
+        btnMultiplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultiplicarActionPerformed(evt);
+            }
+        });
 
         btnDividir.setText("Dividir");
+        btnDividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDividirActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,13 +180,13 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -163,7 +215,30 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void btnSuamrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuamrActionPerformed
         // TODO add your handling code here:
+        Operacion("sumar");
     }//GEN-LAST:event_btnSuamrActionPerformed
+
+    private void btnRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestarActionPerformed
+        // TODO add your handling code here:
+        Operacion("restar");
+    }//GEN-LAST:event_btnRestarActionPerformed
+
+    private void btnMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplicarActionPerformed
+        // TODO add your handling code here:
+        Operacion("multiplicar");
+    }//GEN-LAST:event_btnMultiplicarActionPerformed
+
+    private void btnDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDividirActionPerformed
+        // TODO add your handling code here:
+        Operacion("Dividir");
+    }//GEN-LAST:event_btnDividirActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        ingresaPrimero.setText("");
+        ingresaSegundo.setText("");
+        resultado.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,11 +283,11 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton btnSuamr;
     private javax.swing.JTextField ingresaPrimero;
     private javax.swing.JTextField ingresaSegundo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel primerNumero;
+    private javax.swing.JLabel resultado;
     private javax.swing.JLabel segundoNumero;
     // End of variables declaration//GEN-END:variables
 }
