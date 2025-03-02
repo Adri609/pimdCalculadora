@@ -6,7 +6,7 @@ package pimdcalculadora;
 
 /**
  *
- * @author adrib
+ * @author Bogdan Adrián Tucaciuc
  */
 public class Interfaz extends javax.swing.JFrame {
 
@@ -32,14 +32,13 @@ public class Interfaz extends javax.swing.JFrame {
                 break;
             case "dividir":
                 if (num2 == 0) {
-                    resultado.setText("Error: División por 0");
+                 
                     return;
                 }
                 resultado = logica.dividir(num1, num2);
                 break;
         }
-
-        resultado.setText("Resultado: " + resultado);
+        resOperaciones.setText("El resultado de la operación es: " + resultado);
 }
     
     /**
@@ -70,7 +69,7 @@ public class Interfaz extends javax.swing.JFrame {
         btnDividir = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        resultado = new javax.swing.JLabel();
+        resOperaciones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,18 +174,20 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        resOperaciones.setForeground(new java.awt.Color(0, 204, 255));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(resultado, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addComponent(resOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -237,7 +238,7 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         ingresaPrimero.setText("");
         ingresaSegundo.setText("");
-        resultado.setText("");
+        resOperaciones.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
@@ -287,7 +288,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel primerNumero;
-    private javax.swing.JLabel resultado;
+    private javax.swing.JLabel resOperaciones;
     private javax.swing.JLabel segundoNumero;
     // End of variables declaration//GEN-END:variables
 }
